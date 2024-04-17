@@ -25,3 +25,9 @@ class BotDataBase:
         except sqlite3.Error:
             return False
         return True
+
+    def get_group_id(self, user_id: int) -> int:
+        query = f"SELECT group_number FROM users WHERE user_id = {user_id}"
+        user = self.cursor.execute(query).fetchall()
+        print(user)
+        return user[0][0]

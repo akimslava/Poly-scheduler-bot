@@ -5,7 +5,7 @@ import json
 import pytz
 
 from config import *
-from tools import getData
+from src.parser.tools import getData
 
 
 async def parse_subject(subject: json) -> str:
@@ -73,7 +73,7 @@ async def get(action: str, group_id: int) -> str:
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     try:
-        text = loop.run_until_complete(asyncio.gather(get("на неделю", 38736)))[0]
+        text = loop.run_until_complete(asyncio.gather(get("на неделю", 38734)))[0]
         print(text)
     finally:
         pass

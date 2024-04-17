@@ -3,6 +3,7 @@ import logging
 
 from aiogram.filters import Command
 from src.handlers.basic import get_start
+from src.handlers.schedule import get_schedule
 from src.settings import settings
 from src.utils.commands import set_commands
 from src.utils.kit import bot, dp, data_base
@@ -28,6 +29,7 @@ async def start():
     dp.shutdown.register(stop_bot)
 
     dp.message.register(get_start, Command(commands='start'))
+    dp.message.register(get_schedule, Command(commands='schedule'))
 
     try:
         await dp.start_polling(bot)
