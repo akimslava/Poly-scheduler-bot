@@ -6,7 +6,7 @@ from aiogram.filters import Command
 from src.handlers.basic import get_start
 from src.settings import settings
 from src.utils.commands import set_commands
-from src.utils.kit import bot, dp
+from src.utils.kit import bot, dp, data_base
 
 START_BOT = 'Бот запущен!'
 STOP_BOT = 'Бот остановлен!'
@@ -18,6 +18,7 @@ async def start_bot():
 
 
 async def stop_bot():
+    data_base.conn.close()
     await bot.send_message(settings.bots.admin_message_id, text=STOP_BOT)
 
 
