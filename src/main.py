@@ -7,16 +7,18 @@ from src.handlers.basic import get_start
 from src.settings import settings
 from src.utils.commands import set_commands
 from src.utils.kit import bot, dp
-from src import messages as msg
+
+START_BOT = 'Бот запущен!'
+STOP_BOT = 'Бот остановлен!'
 
 
 async def start_bot():
     await set_commands(bot)
-    await bot.send_message(settings.bots.admin_message_id, text=msg.START_BOT)
+    await bot.send_message(settings.bots.admin_message_id, text=START_BOT)
 
 
 async def stop_bot():
-    await bot.send_message(settings.bots.admin_message_id, text=msg.STOP_BOT)
+    await bot.send_message(settings.bots.admin_message_id, text=STOP_BOT)
 
 
 async def start():
