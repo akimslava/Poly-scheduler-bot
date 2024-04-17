@@ -2,7 +2,6 @@ import asyncio
 import logging
 
 from aiogram.filters import Command
-
 from src.handlers.basic import get_start
 from src.settings import settings
 from src.utils.commands import set_commands
