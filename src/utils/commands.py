@@ -6,6 +6,7 @@ async def set_commands(bot: Bot):
     commands = [
         BotCommand(command='start', description='Поздороваться с ботом'),
         BotCommand(command='schedule', description='Получить расписание'),
+        BotCommand(command='update_group', description='Изменить группу'),
     ]
 
     await bot.set_my_commands(commands, BotCommandScopeDefault())

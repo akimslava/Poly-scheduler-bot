@@ -12,9 +12,9 @@ async def get_start(message: Message, state: FSMContext):
     first_name = message.from_user.first_name
 
     if data_base.user_exist(user_id):
-        await message.answer(msg.WELCOME_OLD_USER.format(first_name))
+        await message.answer(msg.WELCOME_USER.format(first_name))
     else:
-        await message.answer(msg.WELCOME_NEW_USER.format(first_name))
+        await message.answer(msg.WELCOME_USER.format(first_name) + "\n" + msg.ENTER_GROUP)
         await state.set_state(WriteGroupNumber.writing_group_number)
 
 
@@ -25,7 +25,10 @@ async def add_new_user_group(message: Message, state: FSMContext):
 
         if is_groupId_correct(group_number):
             user_id = message.from_user.id
-            data_base.add_user(user_id, group_number)
+
+            if data_base.add_user(user_id, group_number):
+                await message.answer(msg.SUCCESSFULLY_ADDED)
+
         else:
             await message.answer(msg.INVALID_GROUP_NUMBER)
     else:

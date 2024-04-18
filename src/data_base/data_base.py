@@ -29,5 +29,14 @@ class BotDataBase:
     def get_group_id(self, user_id: int) -> int:
         query = f"SELECT group_number FROM users WHERE user_id = {user_id}"
         user = self.cursor.execute(query).fetchall()
-        print(user)
         return user[0][0]
+
+    def update_group_number(self, user_id: int, new_group_number: int) -> bool:
+        query = f"UPDATE users SET group_number = {new_group_number} WHERE user_id = {user_id};"
+        self.cursor.execute(query)
+        try:
+            self.conn.commit()
+        except sqlite3.Error:
+            return False
+        return True
+
