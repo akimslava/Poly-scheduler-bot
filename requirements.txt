@@ -1,0 +1,6 @@
+aiogram
+environs
+httpx
+pytz
+pytest
+pytest-asyncio
