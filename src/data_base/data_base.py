@@ -1,16 +1,17 @@
+import logging
 import os
 import sqlite3
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 DB_NAME = 'poly_scheduler.db'
-DB_FILE_PATH = f'{FILE_PATH}\\{DB_NAME}'
+DB_FILE_PATH = f'{FILE_PATH}/{DB_NAME}'
 
 
 class BotDataBase:
     def __init__(self):
         self.conn = sqlite3.connect(DB_FILE_PATH)
         self.cursor = self.conn.cursor()
-        print("Connection to database: Successful")
+        logging.info("Connection to database: Successful")
 
     def user_exist(self, user_id: int) -> bool:
         query = f"SELECT user_id FROM users WHERE user_id = {user_id}"
