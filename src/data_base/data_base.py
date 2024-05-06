@@ -1,3 +1,4 @@
+import logging
 import os
 import sqlite3
 
@@ -10,7 +11,7 @@ class BotDataBase:
     def __init__(self):
         self.conn = sqlite3.connect(DB_FILE_PATH)
         self.cursor = self.conn.cursor()
-        print("Connection to database: Successful")
+        logging.info("Connection to database: Successful")
 
     def user_exist(self, user_id: int) -> bool:
         query = f"SELECT user_id FROM users WHERE user_id = {user_id}"
