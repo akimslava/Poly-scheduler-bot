@@ -3,7 +3,7 @@ import sqlite3
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 DB_NAME = 'poly_scheduler.db'
-DB_FILE_PATH = f'{FILE_PATH}\\{DB_NAME}'
+DB_FILE_PATH = f'{FILE_PATH}/{DB_NAME}'
 
 
 class BotDataBase:
